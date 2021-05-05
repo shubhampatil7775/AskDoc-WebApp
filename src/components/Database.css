@@ -151,3 +151,18 @@ a{
 Modal{
     padding-top: 20%;
 }
+
+.content {
+  display: flex;
+  
+  margin-top: 50px;
+}
+
+.container{
+padding-top: 8%;
+}  
+
+.newphoto{
+  margin-left: -400px;
+  width: 300%;
+}

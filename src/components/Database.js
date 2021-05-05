@@ -1,175 +1,25 @@
 import React , { useState }from 'react'
 import Modal from "react-modal";
-import { ExpandMore, Link } from "@material-ui/icons";
-import firebase from "firebase"
-import db, { auth } from "../firebase";
-import PeopleAltOutlinedIcon from "@material-ui/icons/PeopleAltOutlined";
-import { useAuth } from "../contexts/AuthContext"
-import {  useHistory } from "react-router-dom"
+
 import 'firebase/firestore';
 import "./Database.css"
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css'
 
-import HomeIcon from "@material-ui/icons/Home";
-import FeaturedPlayListOutlinedIcon from "@material-ui/icons/FeaturedPlayListOutlined";
-import AssignmentTurnedInOutlinedIcon from "@material-ui/icons/AssignmentTurnedInOutlined";
-import NotificationsOutlinedIcon from "@material-ui/icons/NotificationsOutlined";
-import SearchIcon from "@material-ui/icons/Search";
-import LanguageIcon from "@material-ui/icons/Language";
-import { Avatar, Button, Input } from "@material-ui/core";
 import Feed from './Feed';
+import Navbars from './Navbars'
 
 Modal.setAppElement("#root");
 function Database() {
 
-    
-    const { currentUser, logout } = useAuth()
-    const history = useHistory()
-    console.log(currentUser);
-    const [error, setError] = useState("")
-  async function handleLogout() {
-    
-    setError("")
-    try {
-      await logout()
-      history.push("/login")
-    } catch {
-        setError("Failed to log out")
-    }
-  }
-  
- 
-
-    const [IsmodalOpen, setIsModalOpen] = useState("");
-  const [input, setInput] = useState("");
-  const [inputUrl, setInputUrl] = useState("");
-  const questionName = input;
-
-  const handleQuestion = (e) => {
-    e.preventDefault();
-    setIsModalOpen(false);
-
-    if (questionName) {
-      db.collection("questions").add({
-        email:currentUser.email,
-        uid:currentUser.uid,
-        question: input,
-        imageUrl: inputUrl,
-        timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-      });
-    }
-
-    setInput("");
-    setInputUrl("");
-  };
-
-
-
     return (
-        <div class="navbar">
+        <div>
        
-        
-
-        <nav class="navbar navbar-expand fixed-top bold-nav">
-           <a class="navbar-brand" href="/"><img class="try"
-           src="https://askdoc.zohosites.com/5f5dad04-askdoc-comboblueblack-web_06v03f000000000000001.png"
-           alt=""
-         /></a>
-           
-           
-           <div class="collapse navbar-collapse" id="navbarSupportedContent">
-             <ul class="navbar-nav mr-auto">
-               <li class="nav-item active">
-               <a class="nav-link iconbar text-light" href="/">Home</a>
-               </li>
-               
-               <li class="nav-item">
-                 <a class="nav-link text-light" href="/ind">Answers</a>
-               </li>
-               <li class="nav-item">
-                 <a class="nav-link text-light" href="/tweet">Covid Help</a>
-               </li>
-               <li class="nav-item">
-                 <a class="nav-link text-light" href="/ind">About Us</a>
-               </li>
-               
-             </ul>
-              
-               <button  class="btn btn-outline-info my-2 my-sm-0 text-light" onClick={() => setIsModalOpen(true)}>
-               Add Question
-             </button>
-             
-        <Modal
-          isOpen={IsmodalOpen}
-          onRequestClose={() => setIsModalOpen(false)}
-          shouldCloseOnOverlayClick={false}
-          style={{
-            overlay: {
-              width: 700,
-              height: 600,
-              backgroundColor: "rgba(0,0,0,0.8)",
-              zIndex: "1000",
-              top: "50%",
-              left: "50%",
-              marginTop: "-250px",
-              marginLeft: "-350px",
-            },
-          }}
-        >
-          <div className="modal__title">
-            <h5>Add Question</h5>
-            <h5>Share Link</h5>
-          </div>
-          <div className="modal__info">
-            <Avatar
-              className="avatar"
-              
-            />
-            <p>{currentUser.email} asked</p>
-            <div className="modal__scope">
-              <PeopleAltOutlinedIcon />
-              <p>Public</p>
-              <ExpandMore />
-            </div>
-          </div>
-          <div className="modal__Field">
-            <Input
-              value={input}
-              onChange={(e) => setInput(e.target.value)}
-              type="text"
-              placeholder="Start your question with 'What', 'How', 'Why', etc. "
-            />
-            <div className="modal__fieldLink">
-              <Link />
-              <input
-                value={inputUrl}
-                onChange={(e) => setInputUrl(e.target.value)}
-                type="text"
-                placeholder="Optional: inclue a link that gives context"
-              ></input>
-            </div>
-          </div>
-          <div className="modal__buttons">
-            <button className="cancle" onClick={() => setIsModalOpen(false)}>
-              Cancel
-            </button>
-            <button type="sumbit" onClick={handleQuestion} className="add">
-              Add Question
-            </button>
-          </div>
-        </Modal>
-
-             <div class="avatar">
-            <Avatar>
-             <Button variant="link" onClick={handleLogout}>
-          Log Out
-        </Button>
-        </Avatar>
-             
-               </div>
-              
-           </div>
-         </nav>
+      
+         <Navbars/>
+         <div >
+                   <a href="/tweet"> <img class="newphoto" src="https://rizing.com/wp-content/uploads/2020/03/20102_Rizing-Covid-19_Help_1024x285px_2.jpg"/></a>
+         </div>
+         
          <Feed/>
      </div>
     );

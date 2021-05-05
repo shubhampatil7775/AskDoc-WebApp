@@ -13,6 +13,7 @@ import Database from "./Database"
 import Post from "./Post"
 import Feed from "./Feed"
 import Tweet from "./Tweet"
+import Answers from "./Answers"
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
               <Route path="/data" component={Database} />
               <Route path="/post" component={Feed} />
               <Route path="/tweet" component={Tweet} />
+              <Route path="/ans" component={Answers} />
             </Switch>
           </AuthProvider>
         </Router>

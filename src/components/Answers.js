@@ -3,13 +3,15 @@ import Box from './Box'
 import Post from "./Post";
 import db from "../firebase";
 import './Feed.css'
+import { useAuth } from "../contexts/AuthContext"
 
-function Feed() {
+function Answers() {
   const [posts, setPosts] = useState([]);
+  const { currentUser, logout } = useAuth()
+ 
 
   useEffect(() => {
-    db.collection("questions")
-      .orderBy("timestamp", "desc")
+    db.collection("questions").where("email", "==", currentUser.email)
       .onSnapshot((snapshot) =>
         setPosts(
           snapshot.docs.map((doc) => ({
@@ -39,4 +41,4 @@ function Feed() {
   );
 }
 
-export default Feed;
+export default Answers;

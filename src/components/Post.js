@@ -26,7 +26,7 @@ function Post({ Id, question, imageUrl, timestamp, users }) {
   const questionId = useSelector(selectQuestionId);
   const [answer, setAnswer] = useState("");
   const [getAnswers, setGetAnswers] = useState([]);
-
+  var tempuse=""
   useEffect(() => {
     if (questionId) {
       db.collection("questions")
@@ -39,10 +39,27 @@ function Post({ Id, question, imageUrl, timestamp, users }) {
           )
           
         );
+
+        db.collection("questions")
+       
+        .get()
+        .then(function(querySnapshot) {
+          querySnapshot.forEach(function(doc) {
+            // doc.data() is never undefined for query doc snapshots
+            console.log(doc.id, " => ", doc.data().question);
+            if(doc.data().email==currentUser.email)
+            console.log("yes")
+            tempuse=doc.data().question
+        });
+      });
+
        
     }
   }, [questionId]);
  console.log(questionId);
+ 
+
+
   const handleAnswer = (e) => {
     e.preventDefault();
 
@@ -76,11 +93,12 @@ function Post({ Id, question, imageUrl, timestamp, users }) {
         <Avatar
         
         />
-       
+        
         <small>{new Date(timestamp?.toDate()).toLocaleString()}</small>
       </div>
       <div className="post__body">
         <div className="post__question">
+          
           <p>{question}</p>
           <button
             onClick={() => setIsModalOpen(true)}

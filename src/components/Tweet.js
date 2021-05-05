@@ -1,7 +1,10 @@
 
 import { render } from '@testing-library/react';
 import React, { Component } from 'react'
+import { Navbar } from 'react-bootstrap';
+import Navbars from './Navbars'
 const Twit = require('twit');
+
 
 const apikey = 'WJytYEWekZTWeb1E0ShTiEHhO'
 const apiSecretKey = 'zRRLetJxIP0aVjfusx5CbrDpb9PAchR2kQk59GxUbBnCqE71Km'
@@ -71,7 +74,8 @@ export class Tweet extends Component {
     }
     render(){
     return (
-        <div>
+        <div>   
+            <Navbars/>
               <input name="txtMobileNo" id="txtMobileNo" type="text" onChange={this.handleChange} placeholder="Enter Query"></input>
              <button  type="button" class="btn btn-primary"  onClick={this.hek}>Search</button>
             
