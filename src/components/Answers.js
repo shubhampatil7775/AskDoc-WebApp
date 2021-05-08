@@ -4,6 +4,8 @@ import Post from "./Post";
 import db from "../firebase";
 import './Feed.css'
 import { useAuth } from "../contexts/AuthContext"
+import Navbars from './Navbars'
+import '../components/css/Answers.css'
 
 function Answers() {
   const [posts, setPosts] = useState([]);
@@ -25,6 +27,8 @@ function Answers() {
 
   return (
     <div className="feed">
+      <Navbars/>
+      <h1 class="yourans">Your Questions</h1>
       <Box />
       {posts.map(({ id, questions }) => (
         <Post

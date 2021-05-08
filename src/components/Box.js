@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { useAuth } from "../contexts/AuthContext"
 import { Link, useHistory } from "react-router-dom"
-import './Box.css'
+import '../components/css/Box.css'
 import PeopleAltOutlinedIcon from "@material-ui/icons/PeopleAltOutlined";
 import Modal from "react-modal";
 import {Button, Input } from "@material-ui/core";
@@ -46,13 +46,14 @@ export default function Box() {
   return (
     <div className="quoraBox">
       <div className="quoraBox__info">
-        <Avatar
-        />
-         <h5>{currentUser.email}</h5>
+        <div class="avatars">
+        <Avatar />
+        </div>
+         <h5 class="userbold">{currentUser.email}</h5>
       </div>
       <div className="quoraBox__quora">
       <button  class="btn text-dark" onClick={() => setIsModalOpen(true)}>
-               <p>What is your Question or Link?</p>
+               <p class="quorabutton">What is your Question or Link?</p>
              </button>
         <Modal
           isOpen={IsmodalOpen}

@@ -1,12 +1,10 @@
 import { Avatar } from "@material-ui/core";
 import React, { useEffect, useState } from "react";
 import './Post.css'
-import ArrowUpwardOutlinedIcon from "@material-ui/icons/ArrowUpwardOutlined";
 import ArrowDownwardOutlinedIcon from "@material-ui/icons/ArrowDownwardOutlined";
-import RepeatOutlinedIcon from "@material-ui/icons/RepeatOutlined";
-import ChatBubbleOutlineOutlinedIcon from "@material-ui/icons/ChatBubbleOutlineOutlined";
-import { MoreHorizOutlined, ShareOutlined } from "@material-ui/icons";
 import { useDispatch, useSelector } from "react-redux";
+import ThumbUpIcon from '@material-ui/icons/ThumbUp';
+import ThumbDownIcon from '@material-ui/icons/ThumbDown';
 
 import Modal from "react-modal";
 import db from "../firebase";
@@ -16,7 +14,12 @@ import { useAuth } from "../contexts/AuthContext"
 import { Link, useHistory } from "react-router-dom"
 import { selectUser } from "../features/userSlice";
 
-function Post({ Id, question, imageUrl, timestamp, users }) {
+import FontAwesome from 'react-fontawesome'
+
+
+
+function Post({ Id, question, imageUrl, timestamp, users,category }) {
+  
     const [error, setError] = useState("")
     const { currentUser, logout } = useAuth()
     const history = useHistory()
@@ -27,12 +30,14 @@ function Post({ Id, question, imageUrl, timestamp, users }) {
   const [answer, setAnswer] = useState("");
   const [getAnswers, setGetAnswers] = useState([]);
   var tempuse=""
+  var temp=""
+  var again=-1
   useEffect(() => {
     if (questionId) {
       db.collection("questions")
         .doc(questionId)
         .collection("answer")
-        .orderBy("timestamp", "desc")
+        .orderBy("likes", "desc")
         .onSnapshot((snapshot) =>
           setGetAnswers(
             snapshot.docs.map((doc) => ({ id: doc.id, answers: doc.data() }))
@@ -40,42 +45,84 @@ function Post({ Id, question, imageUrl, timestamp, users }) {
           
         );
 
-        db.collection("questions")
        
-        .get()
-        .then(function(querySnapshot) {
-          querySnapshot.forEach(function(doc) {
-            // doc.data() is never undefined for query doc snapshots
-            console.log(doc.id, " => ", doc.data().question);
-            if(doc.data().email==currentUser.email)
-            console.log("yes")
-            tempuse=doc.data().question
-        });
-      });
 
        
     }
   }, [questionId]);
- console.log(questionId);
- 
 
+ console.log(currentUser)
+
+ function setLike(idsk){
+  db.collection("questions")
+  .doc(questionId).collection("answer").doc(idsk)
+  .get()
+  .then(function(doc) {
+    if (doc.exists) {
+      loops(idsk,doc.data().likes);
+    } else {
+      // doc.data() will be undefined in this case
+      console.log("No such document!");
+    }
+  }).catch(function(error) {
+    console.log("Error getting document:", error);
+  });
+ 
+ }
+
+ function loops(ids,lik){
+  db.collection("questions").doc(questionId).collection("answer").doc(ids).update({
+    likes:lik+1
+  })
+ }
+
+
+
+ 
+ function setDisLike(idsk){
+  db.collection("questions")
+  .doc(questionId).collection("answer").doc(idsk)
+  .get()
+  .then(function(doc) {
+    if (doc.exists) {
+      Disloops(idsk,doc.data().dislikes);
+    } else {
+      // doc.data() will be undefined in this case
+      console.log("No such document!");
+    }
+  }).catch(function(error) {
+    console.log("Error getting document:", error);
+  });
+  console.log(idsk)
+ }
+
+ function Disloops(ids,lik){
+  db.collection("questions").doc(questionId).collection("answer").doc(ids).update({
+    dislikes:lik+1
+  })
+ }
 
   const handleAnswer = (e) => {
     e.preventDefault();
 
     if (questionId) {
-      db.collection("questions").doc(questionId).collection("answer").add({
+      temp=db.collection("questions").doc(questionId).collection("answer").add({
         email:currentUser.email,
         uid:currentUser.uid,
         answer: answer,
         questionId: questionId,
+        likes:0,
+        dislikes:0,
         timestamp: firebase.firestore.FieldValue.serverTimestamp(),
       });
     }
-    console.log(questionId);
+  
+    console.log(temp);
     setAnswer("");
     setIsModalOpen(false);
   };
+
+
   return (
     <div
       className="post"
@@ -89,23 +136,38 @@ function Post({ Id, question, imageUrl, timestamp, users }) {
         )
       }
     >
-      <div className="post__info">
-        <Avatar
-        
-        />
-        
+        <div >
+    
+       
+    <div class="card">
+      <div class="postda">
+        <div class="card-header">
+        <div className="post__info ">
+        <Avatar/>
         <small>{new Date(timestamp?.toDate()).toLocaleString()}</small>
+        <div class="moveright">
+          {currentUser.displayName=="Doc"?
+        <button class="btn btn-primary"
+            onClick={() => setIsModalOpen(true)} >
+            Answer
+          </button>:<p>"</p>}
+          </div>
       </div>
+      </div>
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">  <p>{question}</p> </h5>
+        </div>
+        <div class="catpos"><b>{category}</b></div>
+      </div>
+
+</div>
+      
+      
       <div className="post__body">
         <div className="post__question">
           
-          <p>{question}</p>
-          <button
-            onClick={() => setIsModalOpen(true)}
-            className="post__btnAnswer"
-          >
-            Answer
-          </button>
+        
           <Modal
             isOpen={IsmodalOpen}
             onRequestClose={() => setIsModalOpen(false)}
@@ -128,7 +190,7 @@ function Post({ Id, question, imageUrl, timestamp, users }) {
               <p>
                 asked by{" "}
                 <span className="name">
-                  {currentUser.email}
+                  {currentUser.displayName}
                 </span>{" "}
                 {""}
                 on{" "}
@@ -155,49 +217,64 @@ function Post({ Id, question, imageUrl, timestamp, users }) {
             </div>
           </Modal>
         </div>
-        <div className="post__answer">
+        <div >
+       
           {getAnswers.map(({ id, answers }) => (
-            console.log(id),
-            <p key={id} style={{ position: "relative", paddingBottom: "5px" }}>
+            <p  key={id} style={{ position: "relative", paddingBottom: "5px" }}>
               {Id === answers.questionId ? (
-                <span>
+               <div className="post__answer">
+                  <div class="card ">
+                    
+                <span >
+                <div class="postdaa">
+                <div class="card-header">
+                  <div class="post__info">
+                  <Avatar/>
+                      {answers.email}{" "}
+                      <small> {new Date(answers.timestamp?.toDate()).toLocaleString()}</small>
+                      
+                 </div>
+                 </div>
+                 </div>
+                    <br/>
                   {answers.answer}
                   <br />
-                  <span
-                    style={{
-                      position: "absolute",
-                      color: "gray",
-                      fontSize: "small",
-                      display: "flex",
-                      right: "0px",
-                    }}
-                  >
-                    <span style={{ color: "#b92b27" }}>
-                      { answers.email}{" "}
-                      on{" "}
-                      {new Date(answers.timestamp?.toDate()).toLocaleString()}
-                    </span>
-                  </span>
+                  
+                  
+              <div class="row">
+              <div class="col-sm-12 text-center">
+              
+              <button id="btnSearch" class="btn btn-primary  "  onClick={()=>setLike(id)} ><p class="inbutton">{answers.likes}</p><ThumbUpIcon></ThumbUpIcon></button>
+                  
+              <button id="btnClear" class="btn btn-danger "   onClick={()=>setDisLike(id)} ><p class="inbutton">{answers.dislikes}</p><ThumbDownIcon/></button>
+                  
+              </div>
+          </div>
+                  
                 </span>
+                
+                </div>
+                    </div>
               ) : (
                 ""
               )}
             </p>
           ))}
         </div>
+       
+
         <img src={imageUrl} alt="" />
       </div>
       <div className="post__footer">
         <div className="post__footerAction">
-          <ArrowUpwardOutlinedIcon />
+      
           <ArrowDownwardOutlinedIcon />
+        
         </div>
 
-        <RepeatOutlinedIcon />
-        <ChatBubbleOutlineOutlinedIcon />
+        
         <div className="post__footerLeft">
-          <ShareOutlined />
-          <MoreHorizOutlined />
+        
         </div>
       </div>
     </div>

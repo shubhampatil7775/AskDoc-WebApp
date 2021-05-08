@@ -2,14 +2,16 @@ import React, { useRef, useState } from "react"
 import { Form, Button, Card, Alert } from "react-bootstrap"
 import { useAuth } from "../contexts/AuthContext"
 import { Link, useHistory } from "react-router-dom"
+import firebase from "firebase";
 
-export default function Login() {
+export default function LoginDoc() {
   const emailRef = useRef()
   const passwordRef = useRef()
   const { login } = useAuth()
   const [error, setError] = useState("")
   const [loading, setLoading] = useState(false)
   const history = useHistory()
+  const { currentUser, logout } = useAuth()
 
   async function handleSubmit(e) {
     e.preventDefault()
@@ -19,18 +21,30 @@ export default function Login() {
       setLoading(true)
       await login(emailRef.current.value, passwordRef.current.value)
       history.push("/")
+      
     } catch {
       setError("Failed to log in")
     }
 
     setLoading(false)
   }
-
+console.log(currentUser)
+if(currentUser)
+{
+    firebase.auth().currentUser.updateProfile({
+        displayName: "Doc"
+      }).then(function () {
+        console.log("Updated");
+      }, function (error) {
+        console.log("Error happened");
+      });
+      
+}
   return (
     <>
       <Card>
         <Card.Body>
-          <h2 className="text-center mb-4">Log In</h2>
+          <h2 className="text-center mb-4">Log In Doc</h2>
           {error && <Alert variant="danger">{error}</Alert>}
           <Form onSubmit={handleSubmit}>
             <Form.Group id="email">
@@ -52,7 +66,7 @@ export default function Login() {
         </Card.Body>
       </Card>
       <div className="w-100 text-center mt-2">
-        Need an account? <Link to="/signup">Sign Up</Link>
+        Need an account? <Link to="/signupdoc">Sign Up</Link>
       </div>
       <div className="w-100 text-center mt-2">
             <Link to="/welcome">Welcome Page</Link>

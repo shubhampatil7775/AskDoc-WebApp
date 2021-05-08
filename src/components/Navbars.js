@@ -29,6 +29,7 @@ function Navbars() {
     const history = useHistory()
     console.log(currentUser);
     const [error, setError] = useState("")
+    
   async function handleLogout() {
     
     setError("")
@@ -46,6 +47,7 @@ function Navbars() {
     const [IsmodalOpen, setIsModalOpen] = useState("");
   const [input, setInput] = useState("");
   const [inputUrl, setInputUrl] = useState("");
+  const [cat, setCat] = useState("");
   const questionName = input;
 
   const handleQuestion = (e) => {
@@ -58,6 +60,9 @@ function Navbars() {
         uid:currentUser.uid,
         question: input,
         imageUrl: inputUrl,
+        category:cat,
+        likes:0,
+        dislikes:0,
         timestamp: firebase.firestore.FieldValue.serverTimestamp(),
       });
     }
@@ -80,6 +85,7 @@ function Navbars() {
            
            <div class="collapse navbar-collapse" id="navbarSupportedContent">
              <ul class="navbar-nav mr-auto">
+               
                <li class="nav-item active">
                <a class="nav-link iconbar text-light" href="/">Home</a>
                </li>
@@ -140,6 +146,18 @@ function Navbars() {
               type="text"
               placeholder="Start your question with 'What', 'How', 'Why', etc. "
             />
+             <button
+              value={cat}
+              onClick={(e) => setCat(e.target.value)}
+              
+            >
+            <select >
+            <option value="volvo">Volvo</option>
+            <option value="saab">Saab</option>
+            <option value="mercedes">Mercedes</option>
+            <option value="audi">Audi</option>
+            </select>
+            </button>
             <div className="modal__fieldLink">
               <Link />
               <input
@@ -162,11 +180,11 @@ function Navbars() {
 
              <div class="avatar">
             <Avatar>
-             <Button variant="link" onClick={handleLogout}>
-          Log Out
-        </Button>
+            <Button variant="link" onClick={handleLogout}>
+             Log Out
+            </Button>
         </Avatar>
-             
+        
                </div>
               
            </div>

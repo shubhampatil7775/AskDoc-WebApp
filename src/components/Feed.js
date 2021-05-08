@@ -22,7 +22,7 @@ function Feed() {
   }, []);
 
   return (
-    <div className="feed">
+    <div className="feed" style={{marginTop:-150}}>
       <Box />
       {posts.map(({ id, questions }) => (
         <Post
@@ -32,6 +32,7 @@ function Feed() {
           imageUrl={questions.imageUrl}
           timestamp={questions.timestamp}
           users={questions.email}
+          category={questions.category}
         />
       ))
       }

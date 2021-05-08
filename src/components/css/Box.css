@@ -2,11 +2,12 @@
   display: flex;
   flex-direction: column;
  
-  border: 1px solid lightgray;
+  border: 1px solid rgb(128, 125, 125);
   background-color: white;
   border-radius: 5px;
   cursor: pointer;
   margin-top: 200px;
+  background-color: #D5EFFB  ;
 }
 
 .quoraBox:hover {
@@ -16,6 +17,12 @@
 .quoraBox__info {
   display: flex;
   align-items: center;
+  padding-top: 15px;
+  
+}
+.avatars{
+  padding-left: 15px;
+
 }
 
 .quoraBox__info > h5 {
@@ -27,6 +34,13 @@
 .quoraBox__quora {
   display: flex;
   margin-top: 8px;
+  
+}
+.userbold{
+  font-weight: bolder;
+}
+.quorabutton{
+  font-weight: bolder;
 }
 
 .quoraBox__quora > p {
