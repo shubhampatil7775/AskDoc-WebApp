@@ -8,7 +8,7 @@ function SidebarOptions() {
       <div className="sidebarOption">
         <a href="/covid">
         <img
-          src="https://qphs.fs.quoracdn.net/main-thumb-t-930-100-cbbsbwijdhpyzlpipejvqpiijhhoaday.jpeg"
+          src="https://blog.werobotics.org/wp-content/uploads/2020/04/animated-graphic-2019-ncov.jpg"
           alt=""
         />
         <p>Covid</p>
@@ -16,80 +16,96 @@ function SidebarOptions() {
       </div>
 
       <div className="sidebarOption">
-        <img
-          src="https://qphs.fs.quoracdn.net/main-thumb-t-858-100-VnZbEVtOIGkEHXlnYId9slumV59IPgkA.jpeg"
+       <a href="/covid"><img
+          src="https://si.wsj.net/public/resources/images/B3-HN427_vaxsup_SOC_20201211162211.gif"
           alt=""
         />
 
-        <p>Business</p>
-      </div>
-      <div className="sidebarOption">
-        <img
-          src="https://qphs.fs.quoracdn.net/main-thumb-t-1913-100-B8JrwaVauFzsaTSqXDqoWLCXzQb2mTE9.jpeg"
-          alt=""
-        />
-        <p>Psychology</p>
+        <p>Covid Vaccination</p>
+        </a>
       </div>
 
       <div className="sidebarOption">
-        <img
-          src="https://qphs.fs.quoracdn.net/main-thumb-t-877-100-e7jKHEQr0HExAIA9rlsyHlV6HJyRruEo.jpeg"
+      <a href="/covid"><img
+          src="https://image.shutterstock.com/image-vector/young-ill-man-cough-sick-260nw-1565244175.jpg"
           alt=""
         />
-        <p>Cooking</p>
+        <p>Fever,Cough</p>
+        </a>
       </div>
 
       <div className="sidebarOption">
-        <img
-          src="https://qphs.fs.quoracdn.net/main-thumb-t-801-100-Sf8h894FXbQZQit0TeqDrrqS6xw6dwCQ.jpeg"
+      <a href="/covid"><img
+          src="https://image.shutterstock.com/image-vector/cute-cartoon-sad-human-heart-260nw-453996709.jpg"
           alt=""
         />
-        <p>Music</p>
+        <p>Heart </p>
+        </a>
       </div>
 
       <div className="sidebarOption">
-        <img
-          src="https://qphs.fs.quoracdn.net/main-thumb-t-931-100-c8WCPwZ9qPsh5zLGQ5wHh1ddxtc9Cch7.jpeg"
+      <a href="/covid"><img
+          src="https://thumbs.dreamstime.com/z/hurt-stomach-pain-man-was-ache-hold-his-hand-cartoon-67057214.jpg"
           alt=""
         />
-        <p>Science</p>
+        <p>Abdomen</p>
+        </a>
       </div>
 
       <div className="sidebarOption">
-        <img
-          src="https://qphs.fs.quoracdn.net/main-thumb-t-1140-100-24q3tiv4WhPssc5TGwf0mvCM5aiqGVXW.jpeg"
+      <a href="/covid"><img
+          src="https://image.shutterstock.com/image-vector/feet-on-weighing-scales-overweight-260nw-1080187154.jpg"
           alt=""
         />
-        <p>Health</p>
+        <p>Weight</p>
+        </a>
       </div>
 
       <div className="sidebarOption">
-        <img
-          src="https://qphs.fs.quoracdn.net/main-thumb-t-843-100-W7FzODceTO2aQmp8D7E4rKZ8YgSv21eR.jpeg"
+      <a href="/covid"><img
+          src="https://image.shutterstock.com/image-vector/icon-set-five-human-senses-260nw-1782225056.jpg"
           alt=""
         />
-        <p>Movies</p>
+        <p>Eyes,ears,Nose</p>
+        </a>
       </div>
 
       <div className="sidebarOption">
-        <img
-          src="https://qphs.fs.quoracdn.net/main-thumb-t-2177-100-JiR07D1TQSfeQzRvWXomVaY4Poj2f8Yb.jpeg"
+      <a href="/covid"><img
+          src="https://image.shutterstock.com/image-vector/young-man-crying-painful-on-260nw-1016828800.jpg"
           alt=""
         />
-        <p>Technology</p>
+        <p>Muscle Pain</p>
+        </a>
       </div>
 
       <div className="sidebarOption">
-        <img
-          src="https://qphs.fs.quoracdn.net/main-thumb-t-996-100-bfZBQjeEenKKl8fcNY4tVv0FyArtB0Mb.jpeg"
+      <a href="/covid"><img
+          src="https://cdn4.vectorstock.com/i/thumb-large/10/23/woman-having-consultation-with-gynecologist-vector-28331023.jpg"
           alt=""
         />
-        <p>Education</p>
+        <p>Gynic</p>
+        </a>
       </div>
+
       <div className="sidebarOption">
-        <Add />
-        <p className="text">Discover Spaces</p>
+      <a href="/covid"><img
+          src="https://t4.ftcdn.net/jpg/02/72/25/87/360_F_272258728_LWOA70FSLXFzhOLFedNexVvyxNAe3dNF.jpg"
+          alt=""
+        />
+        <p>Kidney</p>
+        </a>
       </div>
+
+      <div className="sidebarOption">
+      <a href="/covid"><img
+          src="https://st2.depositphotos.com/1206312/6381/v/600/depositphotos_63819967-stock-illustration-helping-hand.jpg"
+          alt=""
+        />
+        <p>Other</p>
+        </a>
+      </div>
+      
     </div>
   );
 }

@@ -14,7 +14,8 @@
   border-radius: 5px;
 }
 .sidebarOption > a>img {
-  height: 30px;
+  height: 40px;
+  width: 40px;
   border-radius: 5px;
   margin-left: 20px;
 }
@@ -25,9 +26,10 @@
 }
 .sidebarOption >a> p {
   margin-left: 10px;
-  color: gray;
+  color: rgb(43, 41, 41);
   font-weight: 400;
   font-size: 13px;
+
 }
 
 .sidebarOption > a>.text {
@@ -35,4 +37,21 @@
   color: gray;
   font-weight: 400;
   font-size: 13px;
+  
+  
+}
+
+.sidebarOption>a>p{
+  padding-top: 8px;
+}
+.sidebarOption>a:hover{
+  text-decoration: none;
+}
+.sidebarOption{
+  margin-top: 10px;
+}
+
+.sidebarOptions{
+  margin-top: 40px;
+  margin-left: -40px;
 }

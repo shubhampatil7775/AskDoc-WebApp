@@ -1,6 +1,7 @@
 import { Avatar } from "@material-ui/core";
 import React, { useEffect, useState } from "react";
 import './Post.css'
+import ArrowUpwardOutlinedIcon from "@material-ui/icons/ArrowUpwardOutlined";
 import ArrowDownwardOutlinedIcon from "@material-ui/icons/ArrowDownwardOutlined";
 import { useDispatch, useSelector } from "react-redux";
 import ThumbUpIcon from '@material-ui/icons/ThumbUp';
@@ -18,7 +19,7 @@ import FontAwesome from 'react-fontawesome'
 
 
 
-function Post({ Id, question, imageUrl, timestamp, users,category }) {
+function Post({ Id, question, imageUrl, timestamp, users,category ,likes,dislikes}) {
   
     const [error, setError] = useState("")
     const { currentUser, logout } = useAuth()
@@ -76,7 +77,17 @@ function Post({ Id, question, imageUrl, timestamp, users,category }) {
   })
  }
 
+function setQLikes(myid){
+  db.collection("questions").doc(questionId).update({
+    likes:likes+1
+  })
+}
 
+function setQDisLikes(myid){
+  db.collection("questions").doc(questionId).update({
+    dislikes:dislikes+1
+  })
+}
 
  
  function setDisLike(idsk){
@@ -100,6 +111,10 @@ function Post({ Id, question, imageUrl, timestamp, users,category }) {
   db.collection("questions").doc(questionId).collection("answer").doc(ids).update({
     dislikes:lik+1
   })
+  var var1="hello"
+  var var2="world"
+ var  var3=var1+var2
+  console.log(var3)
  }
 
   const handleAnswer = (e) => {
@@ -111,6 +126,7 @@ function Post({ Id, question, imageUrl, timestamp, users,category }) {
         uid:currentUser.uid,
         answer: answer,
         questionId: questionId,
+        displayName:currentUser.displayName,
         likes:0,
         dislikes:0,
         timestamp: firebase.firestore.FieldValue.serverTimestamp(),
@@ -146,11 +162,11 @@ function Post({ Id, question, imageUrl, timestamp, users,category }) {
         <Avatar/>
         <small>{new Date(timestamp?.toDate()).toLocaleString()}</small>
         <div class="moveright">
-          {currentUser.displayName=="Doc"?
+          {currentUser.emailVerified?
         <button class="btn btn-primary"
             onClick={() => setIsModalOpen(true)} >
             Answer
-          </button>:<p>"</p>}
+          </button>:<p></p>}
           </div>
       </div>
       </div>
@@ -175,12 +191,13 @@ function Post({ Id, question, imageUrl, timestamp, users,category }) {
             style={{
               overlay: {
                 width: 680,
-                height: 550,
-                backgroundColor: "rgba(0,0,0,0.8)",
+                height: 540,
+                borderRadius: "25px",
+                backgroundColor: "#A2D9F3 ",
                 zIndex: "1000",
                 top: "50%",
                 left: "50%",
-                marginTop: "-250px",
+                marginTop: "-230px",
                 marginLeft: "-350px",
               },
             }}
@@ -188,9 +205,9 @@ function Post({ Id, question, imageUrl, timestamp, users,category }) {
             <div className="modal__question">
               <h1>{question}</h1>
               <p>
-                asked by{" "}
+                answer by{" "}
                 <span className="name">
-                  {currentUser.displayName}
+                  {currentUser.email}
                 </span>{" "}
                 {""}
                 on{" "}
@@ -211,7 +228,7 @@ function Post({ Id, question, imageUrl, timestamp, users,category }) {
               <button className="cancle" onClick={() => setIsModalOpen(false)}>
                 Cancel
               </button>
-              <button type="sumbit" onClick={handleAnswer} className="add">
+              <button type="sumbit" onClick={handleAnswer} className="add btn btn-primary">
                 Add Answer
               </button>
             </div>
@@ -230,7 +247,7 @@ function Post({ Id, question, imageUrl, timestamp, users,category }) {
                 <div class="card-header">
                   <div class="post__info">
                   <Avatar/>
-                      {answers.email}{" "}
+                      {answers.displayName}{" "}
                       <small> {new Date(answers.timestamp?.toDate()).toLocaleString()}</small>
                       
                  </div>
@@ -240,16 +257,12 @@ function Post({ Id, question, imageUrl, timestamp, users,category }) {
                   {answers.answer}
                   <br />
                   
-                  
-              <div class="row">
-              <div class="col-sm-12 text-center">
-              
-              <button id="btnSearch" class="btn btn-primary  "  onClick={()=>setLike(id)} ><p class="inbutton">{answers.likes}</p><ThumbUpIcon></ThumbUpIcon></button>
-                  
-              <button id="btnClear" class="btn btn-danger "   onClick={()=>setDisLike(id)} ><p class="inbutton">{answers.dislikes}</p><ThumbDownIcon/></button>
-                  
+      
+              <div class="col-sm-12">
+              {answers.likes}&nbsp;&nbsp;<ThumbUpIcon onClick={()=>setLike(id)} />
+              &nbsp;&nbsp;&nbsp;&nbsp;{answers.dislikes}&nbsp;&nbsp;<ThumbDownIcon  onClick={()=>setDisLike(id)}/>
               </div>
-          </div>
+        
                   
                 </span>
                 
@@ -267,8 +280,8 @@ function Post({ Id, question, imageUrl, timestamp, users,category }) {
       </div>
       <div className="post__footer">
         <div className="post__footerAction">
-      
-          <ArrowDownwardOutlinedIcon />
+        {likes}<ArrowUpwardOutlinedIcon  onClick={()=>setQLikes(Id)}/>
+        {dislikes}<ArrowDownwardOutlinedIcon onClick={()=>setQDisLikes(Id)} />
         
         </div>
 

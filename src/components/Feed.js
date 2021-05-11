@@ -33,6 +33,8 @@ function Feed() {
           timestamp={questions.timestamp}
           users={questions.email}
           category={questions.category}
+          likes={questions.likes}
+          dislikes={questions.dislikes}
         />
       ))
       }

@@ -3,15 +3,18 @@ import { Form, Button, Card, Alert } from "react-bootstrap"
 import { useAuth } from "../contexts/AuthContext"
 import { Link, useHistory } from "react-router-dom"
 import { Container } from "react-bootstrap"
+import firebase from "firebase";
 
 export default function SignupDoc() {
   const emailRef = useRef()
   const passwordRef = useRef()
+  const username=useRef()
   const passwordConfirmRef = useRef()
   const { signup } = useAuth()
   const [error, setError] = useState("")
   const [loading, setLoading] = useState(false)
   const history = useHistory()
+  const { currentUser, logout } = useAuth()
 
   async function handleSubmit(e) {
     e.preventDefault()
@@ -36,6 +39,35 @@ export default function SignupDoc() {
    console.log('hello')
   }
 
+  if(currentUser)
+  {
+    firebase.auth().currentUser.sendEmailVerification().then(function() {
+      console.log("send")
+    }).catch(function(error) {
+      console.log(error)
+    });
+    
+  }
+
+  if(currentUser)
+  {
+    var names=document.getElementById("names");
+    var qual=document.getElementById("qual");
+    var exp=document.getElementById("exp");
+    var city=document.getElementById("city");
+   
+    var tot=names.value+" "+qual.value+" "+exp.value+" "+city.value;
+    console.log(tot)
+    firebase.auth().currentUser.updateProfile({
+      displayName: tot
+      }).then(function () {
+        console.log("Updated");
+      }, function (error) {
+        console.log("Error happened");
+      });
+  }
+ 
+
   return (
   
     <div className="w-100 d-flex align-items-center justify-content-center" style={{ maxWidth: "400px" }}>
@@ -45,6 +77,26 @@ export default function SignupDoc() {
           <h2 className="text-center mb-4">Sign Up Doc</h2>
           {error && <Alert variant="danger">{error}</Alert>}
           <Form onSubmit={handleSubmit}>
+          <Form.Group>
+              <Form.Label>Name</Form.Label>
+              <Form.Control type="text" id="names" required />
+            </Form.Group>
+
+            <Form.Group >
+              <Form.Label>Qualification In</Form.Label>
+              <Form.Control type="text" id="qual" required />
+            </Form.Group>
+
+            <Form.Group >
+              <Form.Label>Experience</Form.Label>
+              <Form.Control type="text" id="exp" required />
+            </Form.Group>
+
+            <Form.Group>
+              <Form.Label>City</Form.Label>
+              <Form.Control type="text" id="city" required />
+            </Form.Group>
+
             <Form.Group id="email">
               <Form.Label>Email</Form.Label>
               <Form.Control type="email" ref={emailRef} required />

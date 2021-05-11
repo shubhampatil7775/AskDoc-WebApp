@@ -29,10 +29,10 @@ export default function LoginDoc() {
     setLoading(false)
   }
 console.log(currentUser)
-if(currentUser)
+/*if(currentUser)
 {
     firebase.auth().currentUser.updateProfile({
-        displayName: "Doc"
+      emailVerified: "Doc"
       }).then(function () {
         console.log("Updated");
       }, function (error) {
@@ -40,6 +40,9 @@ if(currentUser)
       });
       
 }
+*/
+
+
   return (
     <>
       <Card>

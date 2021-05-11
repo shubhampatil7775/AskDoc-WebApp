@@ -27,6 +27,7 @@
     margin-left: 10px;
     font-size: small;
     color: gray;
+    margin-top: 10px;
   }
   
   .modal__info > .modal__scope {
@@ -140,4 +141,8 @@ nav{
 .navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
   background-color: #FFFF00;
   color: #FFC0CB;
+}
+.dropbut{
+  margin-right: 406px;
+  padding-left: 1px;
 }

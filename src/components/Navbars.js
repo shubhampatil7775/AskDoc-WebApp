@@ -113,8 +113,9 @@ function Navbars() {
           style={{
             overlay: {
               width: 700,
-              height: 600,
-              backgroundColor: "rgba(0,0,0,0.8)",
+              height: 550,
+              backgroundColor: "#A2D9F3",
+              borderRadius: "25px",
               zIndex: "1000",
               top: "50%",
               left: "50%",
@@ -125,37 +126,39 @@ function Navbars() {
         >
           <div className="modal__title">
             <h5>Add Question</h5>
-            <h5>Share Link</h5>
           </div>
           <div className="modal__info">
-            <Avatar
-              className="avatar"
-              
-            />
-            <p>{currentUser.email} asked</p>
-            <div className="modal__scope">
-              <PeopleAltOutlinedIcon />
-              <p>Public</p>
-              <ExpandMore />
-            </div>
+            <Avatar/>
+            <p>{currentUser.email}</p>
           </div>
           <div className="modal__Field">
             <Input
               value={input}
               onChange={(e) => setInput(e.target.value)}
               type="text"
-              placeholder="Start your question with 'What', 'How', 'Why', etc. "
+              placeholder="Enter your question"
             />
-             <button
+            <br/>
+            <p>Select Category</p>
+             <button class="dropbut"
               value={cat}
               onClick={(e) => setCat(e.target.value)}
               
             >
             <select >
-            <option value="volvo">Volvo</option>
-            <option value="saab">Saab</option>
-            <option value="mercedes">Mercedes</option>
-            <option value="audi">Audi</option>
+            <option>Select</option>
+            <option>Covid</option>
+            <option>Covid Vaccination</option>
+            <option>Fever,Cough</option>
+            <option>Heart</option>
+            <option>Abdomen</option>
+            <option>Weight</option>
+            <option>Eyes,ear,nose</option>
+            <option>Muscle Pain</option>
+            <option>Gynic</option>
+            <option>Kidney</option>
+            <option>Other</option>
+            
             </select>
             </button>
             <div className="modal__fieldLink">
@@ -179,8 +182,8 @@ function Navbars() {
         </Modal>
 
              <div class="avatar">
-            <Avatar>
-            <Button variant="link" onClick={handleLogout}>
+            <Avatar  onClick={handleLogout}>
+            <Button variant="link">
              Log Out
             </Button>
         </Avatar>

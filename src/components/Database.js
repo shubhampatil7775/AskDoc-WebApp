@@ -4,6 +4,7 @@ import Modal from "react-modal";
 import 'firebase/firestore';
 import "./Database.css"
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css'
+import poster from '../images/poster.jpg'
 
 import Feed from './Feed';
 import Navbars from './Navbars'
@@ -16,7 +17,7 @@ function Database() {
         <div  className="main_page">
          <Navbars/>
          <div >
-                   <a href="/tweet"> <img class="newphoto" src="https://rizing.com/wp-content/uploads/2020/03/20102_Rizing-Covid-19_Help_1024x285px_2.jpg"/></a>
+                   <a href="/tweet"> <img class="newphoto" src={poster}/></a>
          </div >
          <div  className="content">
          <Sidebar/>

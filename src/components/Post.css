@@ -126,6 +126,7 @@ padding-left: 90%;
 .post__footerAction {
   background-color: lightgray;
   padding: 5px;
+  padding-left: 10px;
   align-items: center;
   display: flex;
   justify-content: space-around;
@@ -159,13 +160,13 @@ padding-left: 90%;
 }
 
 .modal__question > h1 {
-  color: #8f1f1b;
+  color: #232325;
   font-weight: 600;
   margin-bottom: 10px;
 }
 
 .modal__question > p {
-  color: gray;
+  color: rgb(102, 98, 98);
   font-size: small;
 }
 

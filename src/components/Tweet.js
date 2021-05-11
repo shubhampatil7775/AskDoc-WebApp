@@ -2,8 +2,11 @@
 import { render } from '@testing-library/react';
 import React, { Component } from 'react'
 import { Navbar } from 'react-bootstrap';
-import Navbars from './Navbars'
+import Navbars from './Navbars';
+import healthdesk from '../images/helpdesk.jpg'
+import "./Tweet.css"
 const Twit = require('twit');
+
 
 
 const apikey = 'WJytYEWekZTWeb1E0ShTiEHhO'
@@ -76,7 +79,8 @@ export class Tweet extends Component {
     return (
         <div>   
             <Navbars/>
-              <input name="txtMobileNo" id="txtMobileNo" type="text" onChange={this.handleChange} placeholder="Enter Query"></input>
+            <a href="https://twitter.com/home" ><img class="help" src={healthdesk}/></a><br></br>
+            <input name="txtMobileNo" id="txtMobileNo" type="text" onChange={this.handleChange} placeholder="Enter Query"></input>
              <button  type="button" class="btn btn-primary"  onClick={this.hek}>Search</button>
             
              <table className="table table-bordered" id="requestlistchild">
