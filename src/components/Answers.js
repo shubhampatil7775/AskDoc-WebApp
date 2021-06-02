@@ -6,6 +6,7 @@ import './Feed.css'
 import { useAuth } from "../contexts/AuthContext"
 import Navbars from './Navbars'
 import '../components/css/Answers.css'
+import {Helmet} from 'react-helmet';
 
 function Answers() {
   const [posts, setPosts] = useState([]);
@@ -27,6 +28,9 @@ function Answers() {
 
   return (
     <div className="feed">
+        <Helmet>
+         <style>{'body { background-color: #E8EBF8  }'}</style>
+    </Helmet>
       <Navbars/>
       <h1 class="yourans">Your Questions</h1>
       <Box />

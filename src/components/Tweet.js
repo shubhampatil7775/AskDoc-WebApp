@@ -5,6 +5,7 @@ import { Navbar } from 'react-bootstrap';
 import Navbars from './Navbars';
 import healthdesk from '../images/helpdesk.jpg'
 import "./Tweet.css"
+import {Helmet} from 'react-helmet';
 const Twit = require('twit');
 
 
@@ -46,7 +47,7 @@ export class Tweet extends Component {
     async hek()
     {  
        
-        T.get('search/tweets', { q:alt, count: 5   }, function(err, data, response) {
+        T.get('search/tweets', { q:alt, count: 10   }, function(err, data, response) {
         
             const tryTable=document.getElementById('requestlistchild');
             const table=tryTable.getElementsByTagName('tbody')[0];
@@ -78,6 +79,9 @@ export class Tweet extends Component {
     render(){
     return (
         <div>   
+             <Helmet>
+         <style>{'body { background-color: #E8EBF8  }'}</style>
+    </Helmet>
             <Navbars/>
             <a href="https://twitter.com/home" ><img class="help" src={healthdesk}/></a><br></br>
             <input name="txtMobileNo" id="txtMobileNo" type="text" onChange={this.handleChange} placeholder="Enter Query"></input>

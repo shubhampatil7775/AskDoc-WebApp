@@ -3,6 +3,7 @@ import { Form, Button, Card, Alert } from "react-bootstrap"
 import { useAuth } from "../contexts/AuthContext"
 import { Link, useHistory } from "react-router-dom"
 import "./Login.css"
+import {Helmet} from 'react-helmet';
 
 export default function Login() {
   const emailRef = useRef()
@@ -28,7 +29,12 @@ export default function Login() {
   }
 
   return (
-    <div class="tobody" style={{ maxWidth: "400px" }}>
+    <>
+        <Helmet>
+         <style>{'body { background-color: #E8EBF8  }'}</style>
+    </Helmet>
+    <div class="playcards" style={{ maxWidth: "400px" }}>
+
       <Card>
         <Card.Body>
           <h2 className="text-center mb-4">Log In</h2>
@@ -52,13 +58,16 @@ export default function Login() {
           </div>
         </Card.Body>
       </Card>
+      <div class="borders">
       <div className="w-100 text-center mt-2">
         Need an account? <Link to="/signup">Sign Up</Link>
       </div>
       <div className="w-100 text-center mt-2">
             <Link to="/welcome">Welcome Page</Link>
           </div>
-          <img class="imh" style={{float:"inherit"}} src="https://static.voices.com/wp-content/uploads/2019/04/MR-3063-healthcare-training-videos-script.jpg"/>
           </div>
+        
+          </div>
+          </>
   )
 }

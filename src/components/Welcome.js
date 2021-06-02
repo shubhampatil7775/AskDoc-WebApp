@@ -2,11 +2,16 @@ import React, { useRef, useState } from "react"
 import { Form, Button, Card, Alert } from "react-bootstrap"
 import { useAuth } from "../contexts/AuthContext"
 import { Link, useHistory } from "react-router-dom"
+import "./Login.css"
+import {Helmet} from 'react-helmet';
 
 export default function Welcome() {
   
   return (
-    <>
+    <div class="playcards" style={{ maxWidth: "400px" }}>
+          <Helmet>
+         <style>{'body { background-color: #E8EBF8  }'}</style>
+    </Helmet>
       <Card>
         <Card.Body>
           <h2 className="text-center mb-4">Welcome to AskDoc</h2>
@@ -18,6 +23,6 @@ export default function Welcome() {
           </Link>
         </Card.Body>
       </Card>
-    </>
+    </div>
   )
 }

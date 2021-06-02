@@ -4,6 +4,8 @@ import { useAuth } from "../contexts/AuthContext"
 import { Link, useHistory } from "react-router-dom"
 import { Container } from "react-bootstrap"
 import firebase from "firebase";
+import {Helmet} from 'react-helmet';
+import "./SignupDoc.css"
 
 export default function SignupDoc() {
   const emailRef = useRef()
@@ -56,7 +58,7 @@ export default function SignupDoc() {
     var exp=document.getElementById("exp");
     var city=document.getElementById("city");
    
-    var tot=names.value+" "+qual.value+" "+exp.value+" "+city.value;
+    var tot=names.value+" *"+qual.value+" *"+exp.value+" *"+city.value;
     console.log(tot)
     firebase.auth().currentUser.updateProfile({
       displayName: tot
@@ -69,9 +71,12 @@ export default function SignupDoc() {
  
 
   return (
-  
-    <div className="w-100 d-flex align-items-center justify-content-center" style={{ maxWidth: "400px" }}>
-   
+    
+    <>
+       <Helmet>
+         <style>{'body { background-color: #E8EBF8  }'}</style>
+    </Helmet>
+    <div class="playcards" style={{ maxWidth: "400px" }}>
       <Card>
         <Card.Body>
           <h2 className="text-center mb-4">Sign Up Doc</h2>
@@ -109,21 +114,18 @@ export default function SignupDoc() {
               <Form.Label>Password Confirmation</Form.Label>
               <Form.Control type="password" ref={passwordConfirmRef} required />
             </Form.Group>
-            <div class="input-group">
-                <div class="custom-file">
-                    <input type="file" class="custom-file-input" id="inputGroupFile01"
-                    aria-describedby="inputGroupFileAddon01"/>
-                    <button class="custom-file-label w-100" for="inputGroupFile01" onClick={setfield()}></button>
-                </div>
-                </div>
+            <Form.Group >
+                <Form.Label>Degree Link:</Form.Label>
+                <Form.Control type="url"/>
+                </Form.Group>
             <Button disabled={loading} className="w-100" type="submit">
               Sign Up
             </Button>
           </Form>
         </Card.Body>
       </Card>
-     
-    </div>
+      </div>
+    </>
    
   )
 }

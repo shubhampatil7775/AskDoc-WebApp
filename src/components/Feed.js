@@ -3,6 +3,7 @@ import Box from './Box'
 import Post from "./Post";
 import db from "../firebase";
 import './Feed.css'
+import {Helmet} from 'react-helmet';
 
 function Feed() {
   const [posts, setPosts] = useState([]);
@@ -23,6 +24,9 @@ function Feed() {
 
   return (
     <div className="feed" style={{marginTop:-150}}>
+      <Helmet>
+         <style>{'body { background-color: #E8EBF8  }'}</style>
+    </Helmet>
       <Box />
       {posts.map(({ id, questions }) => (
         <Post

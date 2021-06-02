@@ -49,6 +49,8 @@
 }
 .sidebarOption{
   margin-top: 10px;
+  background: rgb(216, 227, 250);
+  border-radius: 5px;
 }
 
 .sidebarOptions{

@@ -5,3 +5,7 @@
   #customFile .custom-file-control:lang(en)::before {
     content: "Click me";
   }
+
+  .playcards{
+    margin-top: 100px;
+  }

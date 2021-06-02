@@ -1,6 +1,9 @@
-.tobody{
-    border: 2px solid olive;
+.playcards{
+    margin-left: 30%;
+ 
 }
-.imh{
-   
+.borders{
+    border: white solid 2px;
+    border-radius: 25px;
 }
+

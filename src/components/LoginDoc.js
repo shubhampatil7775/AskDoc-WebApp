@@ -3,6 +3,7 @@ import { Form, Button, Card, Alert } from "react-bootstrap"
 import { useAuth } from "../contexts/AuthContext"
 import { Link, useHistory } from "react-router-dom"
 import firebase from "firebase";
+import {Helmet} from 'react-helmet';
 
 export default function LoginDoc() {
   const emailRef = useRef()
@@ -45,6 +46,10 @@ console.log(currentUser)
 
   return (
     <>
+          <Helmet>
+         <style>{'body { background-color: #E8EBF8  }'}</style>
+    </Helmet>
+    <div class="playcards" style={{ maxWidth: "400px" }}>
       <Card>
         <Card.Body>
           <h2 className="text-center mb-4">Log In Doc</h2>
@@ -73,6 +78,7 @@ console.log(currentUser)
       </div>
       <div className="w-100 text-center mt-2">
             <Link to="/welcome">Welcome Page</Link>
+          </div>
           </div>
     </>
   )

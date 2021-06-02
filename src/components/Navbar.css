@@ -79,7 +79,7 @@
     font-weight: 500;
     padding: 10px;
     margin-right: 10px;
-    border-radius: 33px;
+   
     cursor: pointer;
   }
   .modal__buttons > .add {
@@ -91,7 +91,7 @@
     font-weight: 700;
     padding: 10px;
     margin-right: 10px;
-    border-radius: 33px;
+    
     cursor: pointer;
   }
   
