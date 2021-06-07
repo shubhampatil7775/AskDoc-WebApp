@@ -16,7 +16,7 @@ function SidebarOptions() {
       </div>
 
       <div className="sidebarOption">
-       <a href="/covid"><img
+       <a href="/vaccination"><img
           src="https://si.wsj.net/public/resources/images/B3-HN427_vaxsup_SOC_20201211162211.gif"
           alt=""
         />
@@ -26,7 +26,7 @@ function SidebarOptions() {
       </div>
 
       <div className="sidebarOption">
-      <a href="/covid"><img
+      <a href="/fever"><img
           src="https://image.shutterstock.com/image-vector/young-ill-man-cough-sick-260nw-1565244175.jpg"
           alt=""
         />
@@ -35,7 +35,7 @@ function SidebarOptions() {
       </div>
 
       <div className="sidebarOption">
-      <a href="/covid"><img
+      <a href="/heart"><img
           src="https://image.shutterstock.com/image-vector/cute-cartoon-sad-human-heart-260nw-453996709.jpg"
           alt=""
         />
@@ -44,7 +44,7 @@ function SidebarOptions() {
       </div>
 
       <div className="sidebarOption">
-      <a href="/covid"><img
+      <a href="/abdomen"><img
           src="https://thumbs.dreamstime.com/z/hurt-stomach-pain-man-was-ache-hold-his-hand-cartoon-67057214.jpg"
           alt=""
         />
@@ -53,7 +53,7 @@ function SidebarOptions() {
       </div>
 
       <div className="sidebarOption">
-      <a href="/covid"><img
+      <a href="/weight"><img
           src="https://image.shutterstock.com/image-vector/feet-on-weighing-scales-overweight-260nw-1080187154.jpg"
           alt=""
         />
@@ -62,7 +62,7 @@ function SidebarOptions() {
       </div>
 
       <div className="sidebarOption">
-      <a href="/covid"><img
+      <a href="/eyes"><img
           src="https://image.shutterstock.com/image-vector/icon-set-five-human-senses-260nw-1782225056.jpg"
           alt=""
         />
@@ -71,7 +71,7 @@ function SidebarOptions() {
       </div>
 
       <div className="sidebarOption">
-      <a href="/covid"><img
+      <a href="/muscle"><img
           src="https://image.shutterstock.com/image-vector/young-man-crying-painful-on-260nw-1016828800.jpg"
           alt=""
         />
@@ -80,7 +80,7 @@ function SidebarOptions() {
       </div>
 
       <div className="sidebarOption">
-      <a href="/covid"><img
+      <a href="/gynic"><img
           src="https://cdn4.vectorstock.com/i/thumb-large/10/23/woman-having-consultation-with-gynecologist-vector-28331023.jpg"
           alt=""
         />
@@ -89,7 +89,7 @@ function SidebarOptions() {
       </div>
 
       <div className="sidebarOption">
-      <a href="/covid"><img
+      <a href="/kidney"><img
           src="https://t4.ftcdn.net/jpg/02/72/25/87/360_F_272258728_LWOA70FSLXFzhOLFedNexVvyxNAe3dNF.jpg"
           alt=""
         />
@@ -98,7 +98,7 @@ function SidebarOptions() {
       </div>
 
       <div className="sidebarOption">
-      <a href="/covid"><img
+      <a href="/others"><img
           src="https://st2.depositphotos.com/1206312/6381/v/600/depositphotos_63819967-stock-illustration-helping-hand.jpg"
           alt=""
         />

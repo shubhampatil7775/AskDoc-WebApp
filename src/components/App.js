@@ -18,6 +18,16 @@ import Coronavirus from "../components/Diseases/Coronavirus"
 import LoginDoc from "./LoginDoc"
 import Welcome from "./Welcome"
 import SignupDoc from "./SignupDoc"
+import Abdomen from "./Diseases/Abdomen"
+import Fever from "./Diseases/Fever"
+import Eyes from "./Diseases/Eyes"
+import Gynic from "./Diseases/Gynic"
+import Heart from "./Diseases/Heart"
+import Kidney from "./Diseases/Kidney"
+import Muscle from "./Diseases/Muscle"
+import Others from "./Diseases/Others"
+import Vaccination from "./Diseases/Vaccination"
+import Weight from "./Diseases/Weight"
 
 function App() {
   return (
@@ -39,10 +49,22 @@ function App() {
               <Route path="/post" component={Feed} />
               <Route path="/tweet" component={Tweet} />
               <Route path="/ans" component={Answers} />
-              <Route path="/covid" component={Coronavirus} />
               <Route path="/logindoc" component={LoginDoc} />
               <Route path="/welcome" component={Welcome} />
               <Route path="/signupdoc" component={SignupDoc} />
+
+              <Route path="/covid" component={Coronavirus} />
+              <Route path="/abdomen" component={Abdomen} />
+              <Route path="/eyes" component={Eyes} />
+              <Route path="/fever" component={Fever} />
+              <Route path="/gynic" component={Gynic} />
+              <Route path="/heart" component={Heart} />
+              <Route path="/kidney" component={Kidney} />
+              <Route path="/muscle" component={Muscle} />
+              <Route path="/others" component={Others} />
+              <Route path="/vaccination" component={Vaccination} />
+              <Route path="/weight" component={Weight} />
+
             </Switch>
           </AuthProvider>
         </Router>

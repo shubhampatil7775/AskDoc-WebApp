@@ -232,6 +232,7 @@ function setQDisLikes(myid){
                 Add Answer
               </button>
             </div>
+          
           </Modal>
         </div>
         <div >
@@ -256,13 +257,13 @@ function setQDisLikes(myid){
                     <br/>
                   {answers.answer}
                   <br />
-                  
-      
-              <div class="col-sm-12">
+                  <div class="col-sm-12">
               {answers.likes}&nbsp;&nbsp;<ThumbUpIcon onClick={()=>setLike(id)} />
               &nbsp;&nbsp;&nbsp;&nbsp;{answers.dislikes}&nbsp;&nbsp;<ThumbDownIcon  onClick={()=>setDisLike(id)}/>
               </div>
         
+      
+
                   
                 </span>
                 
@@ -271,19 +272,18 @@ function setQDisLikes(myid){
               ) : (
                 ""
               )}
+              
             </p>
+            
           ))}
+          
         </div>
        
 
         <img src={imageUrl} alt="" />
       </div>
       <div className="post__footer">
-        <div className="post__footerAction">
-        {likes}<ArrowUpwardOutlinedIcon  onClick={()=>setQLikes(Id)}/>
-        {dislikes}<ArrowDownwardOutlinedIcon onClick={()=>setQDisLikes(Id)} />
-        
-        </div>
+    
 
         
         <div className="post__footerLeft">

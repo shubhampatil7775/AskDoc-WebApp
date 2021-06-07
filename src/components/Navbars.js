@@ -14,7 +14,7 @@ import "./Navbar.css"
 import HomeIcon from "@material-ui/icons/Home";
 import FeaturedPlayListOutlinedIcon from "@material-ui/icons/FeaturedPlayListOutlined";
 import AssignmentTurnedInOutlinedIcon from "@material-ui/icons/AssignmentTurnedInOutlined";
-import NotificationsOutlinedIcon from "@material-ui/icons/NotificationsOutlined";
+
 import SearchIcon from "@material-ui/icons/Search";
 import LanguageIcon from "@material-ui/icons/Language";
 import { Avatar, Button, Input } from "@material-ui/core";
@@ -146,7 +146,7 @@ function Navbars() {
               
             >
             <select >
-            <option>Select</option>
+            <option>General</option>
             <option>Covid</option>
             <option>Covid Vaccination</option>
             <option>Fever,Cough</option>

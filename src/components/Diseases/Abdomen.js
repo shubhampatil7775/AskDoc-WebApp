@@ -8,13 +8,13 @@ import Navbars from './../Navbars'
 import '../../components/css/Answers.css'
 import {Helmet} from 'react-helmet';
 
-function Coronavirus() {
+function Abdomen() {
   const [posts, setPosts] = useState([]);
   const { currentUser, logout } = useAuth()
  
 
   useEffect(() => {
-    db.collection("questions").where("category", "==", "Covid")
+    db.collection("questions").where("category", "==", "Abdomen")
       .onSnapshot((snapshot) =>
         setPosts(
           snapshot.docs.map((doc) => ({
@@ -32,7 +32,7 @@ function Coronavirus() {
          <style>{'body { background-color: #E8EBF8  }'}</style>
     </Helmet>
       <Navbars/>
-      <h1 class="yourans">Coronavirus</h1>
+      <h1 class="yourans">Abdomen</h1>
       <Box />
       {posts.map(({ id, questions }) => (
         <Post
@@ -49,4 +49,4 @@ function Coronavirus() {
   );
 }
 
-export default Coronavirus;
+export default Abdomen;

@@ -112,11 +112,11 @@ export default function SignupDoc() {
             </Form.Group>
             <Form.Group id="password-confirm">
               <Form.Label>Password Confirmation</Form.Label>
-              <Form.Control type="password" ref={passwordConfirmRef} required />
+              <Form.Control type="password" ref={passwordConfirmRef} pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required />
             </Form.Group>
             <Form.Group >
                 <Form.Label>Degree Link:</Form.Label>
-                <Form.Control type="url"/>
+                <Form.Control type="url" required/>
                 </Form.Group>
             <Button disabled={loading} className="w-100" type="submit">
               Sign Up
